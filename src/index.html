@@ -55,14 +55,14 @@
 <script type="text/javascript">
   setTimeout(function(){
     var hjs=document.createElement('script');
-    hjs.setAttribute('src','//api.hitokoto.us/rand?encode=jsc&charset=utf-8&fun=save_hitokoto');
+    hjs.setAttribute('src','https://v1.hitokoto.cn/?encode=json&charset=utf-8&callback=save_hitokoto');
     document.body.appendChild(hjs);
   },200);
 
   function save_hitokoto(response){
     console.log(response);
     credit = $('#credit').html();
-    credit += ' | <span title="' + response.source + ' | ' + response.catname;
+    credit += ' | <span title="From: ' + response.from;
     credit += '">' + response.hitokoto + '</span>';
     $('#credit').html(credit);
   }
