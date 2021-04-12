@@ -7,8 +7,8 @@
 
   <link rel="stylesheet" type="text/css" href="style.css" media="screen" title="Default" />
 
-  <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.1.min.js"></script>
-  
+  <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery/jquery-3.6.0.min.js"></script>
+
   <!-- MINIFY: -->
   <script type="text/javascript" src="jquery.hotkeys-0.7.9.js"></script>
   <script type="text/javascript" src="jquery.browser.js"></script>
@@ -55,15 +55,16 @@
 <script type="text/javascript">
   setTimeout(function(){
     var hjs=document.createElement('script');
-    hjs.setAttribute('src','https://v1.hitokoto.cn/?encode=json&charset=utf-8&callback=save_hitokoto');
+    hjs.setAttribute('src','https://v1.hitokoto.cn/?c=a&encode=json&charset=utf-8&callback=save_hitokoto');
     document.body.appendChild(hjs);
   },200);
 
   function save_hitokoto(response){
+    var rsp = JSON.parse(response)
     console.log(response);
     credit = $('#credit').html();
-    credit += ' | <span title="From: ' + response.from;
-    credit += '">' + response.hitokoto + '</span>';
+    credit += ' | <span title="From: ' + rsp.from;
+    credit += '">' + rsp.hitokoto + '</span>';
     $('#credit').html(credit);
   }
 </script>
